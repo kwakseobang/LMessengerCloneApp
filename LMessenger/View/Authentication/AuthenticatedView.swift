@@ -11,16 +11,16 @@ import SwiftUI
 struct AuthenticatedView: View {
     @StateObject var authViewModel: AuthenticationViewModel
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        switch authViewModel.authenticationState {
+        case .authenticated:
+            MainTabView()
+        case.unauthenticated:
+            LoginIntroView()
         }
-        .padding()
     }
 }
 
 #Preview {
-    AuthenticatedView(authViewModel: .init())
+    //Preview용 서비스를 따로 만들어서 주입 why? Preview는 네트워크나 파베 연동 필요 x
+    AuthenticatedView(authViewModel: .init(container: .init(services: StubService())))
 }
