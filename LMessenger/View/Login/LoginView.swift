@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @Environment(\.dismiss) var dismiss //현재 화면을 dismiss해서 이전 화면으로 돌아가기 위해 사용
+    @EnvironmentObject var authViewModel: AuthenticationViewModel
     var body: some View {
         VStack(alignment: .leading,spacing: 5) {
             Group{

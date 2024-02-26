@@ -12,6 +12,10 @@ enum AuthenticationState {
     case authenticated //인증
 }
 class AuthenticationViewModel: ObservableObject {
+    //view에서 일어나는 액션 정의
+    enum Action {
+        case googleLogin
+    }
     //이 값은 인증 뷰에서 로그인 여부를 확인하여 브랜치해주기때문에 Published 선언
     @Published var authenticationState: AuthenticationState = .unauthenticated
     
@@ -20,5 +24,13 @@ class AuthenticationViewModel: ObservableObject {
     ///DIContainer를 통해서 서비스에 접근할 예정이므로 init()에 container를 받아서 뷰  모델이 넣어준다.
     init(container: DIContainer) {
         self.container = container
+    }
+    
+    func send(action: Action) {
+        switch action {
+        case .googleLogin:
+            // TODO: 
+            return
+        }
     }
 }
